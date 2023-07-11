@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.shafi.myjetpackapplication.models.Verses
 
 @Composable
-fun VerseListScreen(data: Array<Verses>, onClick: () -> Unit) {
+fun VerseListScreen(data: Array<Verses>, onClick: (verse: Verses) -> Unit) {
 
     Column {
         Text(
@@ -25,8 +25,6 @@ fun VerseListScreen(data: Array<Verses>, onClick: () -> Unit) {
             style = MaterialTheme.typography.h5,
             fontFamily = FontFamily.Monospace
         )
-        VerseList(data = data) {
-            onClick()
-        }
+        VerseList(data = data, onClick)
     }
 }

@@ -33,10 +33,10 @@ import com.shafi.myjetpackapplication.R
 import com.shafi.myjetpackapplication.models.Verses
 
 @Composable
-fun VerseListItem(verse: Verses, onClick: () -> Unit) {
+fun VerseListItem(verse: Verses, onClick: (verse: Verses) -> Unit) {
     Card(
         elevation = 4.dp,
-        modifier = Modifier.padding(8.dp).clickable{ onClick() }
+        modifier = Modifier.padding(8.dp).clickable{ onClick(verse) }
     ) {
 
         Row(modifier = Modifier.padding(16.dp)) {

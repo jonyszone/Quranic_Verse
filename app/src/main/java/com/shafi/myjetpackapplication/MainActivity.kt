@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.shafi.myjetpackapplication.screens.VerseListItemDetails
 import com.shafi.myjetpackapplication.screens.VerseListScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,9 +35,15 @@ class MainActivity : ComponentActivity() {
 fun App() {
 
     if (DataManager.isDataLoaded.value) {
-        VerseListScreen(data = DataManager.data) {
 
+        if (DataManager.currentPage.value == Pages.LISTING) {
+            VerseListScreen(data = DataManager.data) {
+                DataManager.switchPages(it)
+            }
+        } else {
+            DataManager.currentVerses?.let { VerseListItemDetails(verse = it) }
         }
+
     } else {
         Box(
             contentAlignment = Alignment.Center,
@@ -50,6 +57,11 @@ fun App() {
         }
 
     }
+}
+
+enum class Pages {
+    LISTING,
+    DETAILS
 }
 
 

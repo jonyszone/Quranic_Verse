@@ -7,6 +7,9 @@ import com.shafi.myjetpackapplication.models.Verses
 
 object DataManager {
     var data = emptyArray<Verses>()
+    var currentVerses: Verses ? = null
+
+    var currentPage = mutableStateOf(Pages.LISTING)
     var isDataLoaded = mutableStateOf(false)
 
     fun loadAssetsFromFile(context: Context) {
@@ -20,5 +23,15 @@ object DataManager {
         val gson = Gson()
         data = gson.fromJson(json, Array<Verses> ::class.java)
         isDataLoaded.value = true
+    }
+
+    fun switchPages(verses: Verses?) {
+        if (currentPage.value == Pages.LISTING) {
+
+            currentVerses = verses
+            currentPage.value = Pages.DETAILS
+        } else{
+            currentPage.value = Pages.LISTING
+        }
     }
 }

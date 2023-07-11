@@ -6,13 +6,11 @@ import androidx.compose.runtime.Composable
 import com.shafi.myjetpackapplication.models.Verses
 
 @Composable
-fun VerseList(data: Array<Verses>, onClick: () -> Unit) {
+fun VerseList(data: Array<Verses>, onClick: (verse: Verses) -> Unit) {
 
     LazyColumn(content = {
         items(data) {
-            VerseListItem(verse = it) {
-                onClick()
-            }
+            VerseListItem(verse = it, onClick)
         }
     })
 }
