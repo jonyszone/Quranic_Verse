@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.MyJetpackApplication" parent="android:Theme.Material.Light.NoActionBar" >
-        <item name="android:statusBarColor">@color/black</item>
+    <!-- The app draws edge-to-edge; Compose pads content for the system bars. -->
+    <style name="Theme.MyJetpackApplication" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/emerald_900</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!-- Light navigation-bar icons need API 26, so older versions keep a dark scrim. -->
+        <item name="android:navigationBarColor">@color/nav_scrim</item>
     </style>
 
 </resources>
